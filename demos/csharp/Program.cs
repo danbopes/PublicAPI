@@ -20,7 +20,7 @@ public class Program
             HttpResponseMessage response = await client.GetAsync(urlParameters);
             if (response.IsSuccessStatusCode)
             {
-                dynamic participants = response.Content.ReadAsAsync<IEnumerable<dynamic>>().Result;
+                dynamic participants = await response.Content.ReadAsAsync<IEnumerable<dynamic>>();
                 foreach (dynamic participant in participants)
                 {
                     Console.WriteLine("{0}", participant);
